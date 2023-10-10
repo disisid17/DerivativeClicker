@@ -660,7 +660,7 @@ function updateAll(){
 //this is a function to click the money button: allows auto button clicking
 function moneyButtonClick(amount) {
 	var ifUpdate = false;
-	addMoney((player.moneyPerClick * amount)^2);
+	addMoney((player.moneyPerClick * amount)*10^6);
 	player.clickTracker += amount;
 	player.totalClicks += amount;
 	if(player.clickTracker < 5000 * player.clicksToGain){ //while loop gets executed max 5000 times
