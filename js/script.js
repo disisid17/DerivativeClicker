@@ -58,7 +58,7 @@ function displayNum(num, ifMoney){
 //function that recalculates the multipliers associated with upgrades
 function calcMult(mult){
 	var index = mult - 1;
-	calcMult.factors = [0.0005, 0.002, 0.005, 0.01, 0.02, 0.04, 0.06];
+	calcMult.factors = [0.5, 2.0, 5, 10, 20, 40, 60];
 	var totalBuildings = 0;
 	
 	for(var i = mult*5 - 5; i < mult*5; i++){
