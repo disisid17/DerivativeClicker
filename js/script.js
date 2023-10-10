@@ -12,7 +12,7 @@ window.onblur = function(){isActive=false;};
 
 //functions that add to variables
 function addMoney(money) {
-	player.money = Math.round((player.money + money)*100)/100;
+	player.money = Math.round((player.money + money))/100;
 	if(money > 0){
 		player.totalMoneyEarned = Math.round((player.totalMoneyEarned + money)*100)/100;
 	}
