@@ -12,7 +12,7 @@ window.onblur = function(){isActive=false;};
 
 //functions that add to variables
 function addMoney(money) {
-	player.money = Math.round((player.money + money)*100)/100;
+	player.money = Math.round((player.money + money)*100.0)/100.0;
 	if(money > 0){
 		player.totalMoneyEarned = Math.round((player.totalMoneyEarned + money)*100)/100;
 	}
@@ -35,7 +35,7 @@ function addProofs(proofs){
 	player.proofs += Math.round(proofs);
 	player.proofsToNextCurr -= Math.round(proofs);
 	player.totalProofs += Math.round(proofs);
-	addMoney(-Math.round(proofs) * player.costPerProof);
+	addMoney(Math.round(proofs) * player.costPerProof);
 }
 
 //function to display values
@@ -821,8 +821,8 @@ function buyBuilding(index){
 		player.buildings[index].owned += numToBuy;
 		player.buildings[index].manual += numToBuy;
 			
-		addMoney(-moneyCost);
-		player.proofs -= proofCost;
+		addMoney(moneyCost);
+		player.proofs = proofCost;
 			
 		player.buildings[index].moneyCost = Math.round((player.buildings[index].moneyCost * Math.pow(player.buildings[index].factor, numToBuy))*100)/100;
 		player.buildings[index].proofCost = Math.round(player.buildings[index].proofCost * Math.pow(player.buildings[index].factor, numToBuy));
@@ -1062,7 +1062,7 @@ var update = function(){
 		player.moneyPerClick = ((player.buildings[3].owned * player.mult[0] * 0.1) + 1) * globalMult[0];
 		player.moneyPerSecond = (((player.buildings[0].owned * player.deriv1Money * player.mult[0]) + (player.buildings[2].owned * 2 * player.mult[0])) * globalMult[0]);
 		player.proofsPerSecond = Math.round(player.buildings[1].owned * player.mult[0] * globalMult[0]);
-		player.netMoneyPerSecond = player.moneyPerSecond - (player.proofsPerSecond * player.costPerProof);
+		player.netMoneyPerSecond = player.moneyPerSecond + (player.proofsPerSecond * player.costPerProof);
 		player.moneyPerAutoclick = player.upgrades[0] * player.moneyPerClick;
 		
 		update.count += player.timeMult;
