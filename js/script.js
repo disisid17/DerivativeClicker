@@ -35,7 +35,7 @@ function addProofs(proofs){
 	player.proofs += Math.round(proofs);
 	player.proofsToNextCurr -= Math.round(proofs);
 	player.totalProofs += Math.round(proofs);
-	addMoney(Math.round(proofs) * player.costPerProof);
+	addMoney(-Math.round(proofs) * player.costPerProof);
 }
 
 //function to display values
@@ -58,7 +58,7 @@ function displayNum(num, ifMoney){
 //function that recalculates the multipliers associated with upgrades
 function calcMult(mult){
 	var index = mult - 1;
-	calcMult.factors = [50, 200, 500, 1000, 2000, 4000, 6000];
+	calcMult.factors = [5000, 20000, 50000, 100000, 200000, 400000, 600000];
 	var totalBuildings = 0;
 	
 	for(var i = mult*5 - 5; i < mult*5; i++){
@@ -821,8 +821,8 @@ function buyBuilding(index){
 		player.buildings[index].owned += numToBuy;
 		player.buildings[index].manual += numToBuy;
 			
-		addMoney(moneyCost);
-		player.proofs = proofCost;
+		addMoney(-moneyCost);
+		player.proofs -= proofCost;
 			
 		player.buildings[index].moneyCost = Math.round((player.buildings[index].moneyCost * Math.pow(player.buildings[index].factor, numToBuy))*100)/100;
 		player.buildings[index].proofCost = Math.round(player.buildings[index].proofCost * Math.pow(player.buildings[index].factor, numToBuy));
