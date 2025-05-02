@@ -663,7 +663,7 @@ function moneyButtonClick(amount) {
 	addMoney(player.moneyPerClick * amount);
 	player.clickTracker += amount;
 	player.totalClicks += amount;
-	if(player.clickTracker < 5000000 * player.clicksToGain){ //while loop gets executed max 5000 times
+	if(player.clickTracker < 1000 * player.clicksToGain){ //while loop gets executed max 5000 times
     	while(player.clickTracker >= player.clicksToGain){
     		var toAdd = Math.round(player.buildings[8].owned * player.mult[1] * globalMult[1])
     		player.clickTracker -= player.clicksToGain;
